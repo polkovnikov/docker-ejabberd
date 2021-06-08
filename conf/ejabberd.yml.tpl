@@ -98,9 +98,10 @@ listen:
   -
     port: 4560
     module: ejabberd_xmlrpc
-    api_permissions:
-      configure:
-        all: []
+    #api_permissions:
+    #  configure:
+    #    all: []
+
 
   -
     port: 5280
@@ -346,7 +347,7 @@ access_rules:
     {% endif %}
   ## Only allow to register from localhost
   trusted_network:
-    loopback: allow
+    allow: loopback
 
 ###   ============
 ###   SHAPER RULES
@@ -441,7 +442,7 @@ modules:
       "eu.siacs.conversations.axolotl.*":
         access_model: open
     ## reduces resource comsumption, but XEP incompliant
-    ignore_pep_from_offline: true
+    # ignore_pep_from_offline: true
     ## XEP compliant, but increases resource comsumption
     ignore_pep_from_offline: false
     last_item_cache: true
@@ -518,7 +519,7 @@ modules:
         restricted: true
 {%- endif %}
   mod_time: {}
-  mod_avatar: {}
+  #mod_avatar: {}
   mod_vcard: {}
   {%- if env.get('EJABBERD_MOD_VERSION', "true") == "true" %}
   mod_version:
